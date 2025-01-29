@@ -1,0 +1,31 @@
+.carousel-wrapper {
+  width: 100%;
+  height: 40vh;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-top: 7.5vh;
+}
+
+.image-belt {
+  display: flex;
+  width: max-content;
+  animation: slide 15s linear infinite;
+}
+
+.image-belt img {
+  width: auto;
+  height: 25vh;
+  object-fit: cover;
+  margin-right: 5vw;
+  border: white solid 0.1rem;
+  border-radius: 0.5rem;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
