@@ -5,7 +5,7 @@ export default function Background() {
     <div
       className="position-fixed top-0 start-0 w-100 h-100"
       style={{
-        backgroundImage: "url('/Background/bg.webp')",
+        backgroundImage: "url('/Backgrounds/Bg-1.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center top",
         zIndex: -1,

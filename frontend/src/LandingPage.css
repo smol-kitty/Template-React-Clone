@@ -1,0 +1,47 @@
+@keyframes fest-logo-width {
+  0% {
+    width: 40vw;
+  }
+  66% {
+    width: 40vw;
+  }
+  100% {
+    width: 55vw;
+  }
+}
+
+@keyframes padding-top {
+  0% {
+    padding-top: 20vh;
+  }
+  66% {
+    padding-top: 20vh;
+  }
+  100% {
+    padding-top: 0vh;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    visibility: visible;
+  }
+  100% {
+    visibility: hidden;
+  }
+}
+
+.fest-logo {
+  width: 40vw;
+  animation: fest-logo-width 3s forwards;
+}
+
+.landing-container {
+  padding-top: 20vh;
+  animation: padding-top 3s forwards;
+}
+
+.college-logo {
+  visibility: visible;
+  animation: disappear 2s forwards;
+}

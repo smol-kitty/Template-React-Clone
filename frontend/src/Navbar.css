@@ -1,0 +1,16 @@
+@keyframes marginTop {
+  0% {
+    margin-top: 90vh;
+  }
+  100% {
+    margin-top: 50vh;
+  }
+}
+
+.navbar {
+  margin-top: 0;
+}
+
+.navbar.active {
+  animation: marginTop 3s ease-in forwards;
+}
