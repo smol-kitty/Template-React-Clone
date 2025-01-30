@@ -45,3 +45,8 @@
   visibility: visible;
   animation: disappear 2s forwards;
 }
+
+.double-down {
+  cursor: pointer;
+}
+

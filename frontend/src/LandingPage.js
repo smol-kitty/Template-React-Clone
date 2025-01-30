@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import LandingImageCarousel from "./LandingImageCarousel";
 import "./LandingPage.css";
@@ -14,11 +14,28 @@ export default function LandingPage() {
           background: "url('/Backgrounds/Bg-2.webp')",
           backgroundSize: "cover",
         });
+        setVisible(true);
       }, 2000);
 
       return () => clearTimeout(timer);
     }
   }, [location.pathname]);
+  const sectionRef = useRef(null);
+  const [visible1, setVisible1] = useState(true);
+  const [visible2, setVisible2] = useState(false);
+  const scrollToSection = () => {
+    setVisible2(true);
+
+    setTimeout(() => {
+      if (sectionRef.current) {
+        sectionRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+
+    setTimeout(() => {
+      setVisible1(false);
+    }, 1000);
+  };
   const [style1, setStyle1] = useState();
   const [style2, setStyle2] = useState();
   const [style3, setStyle3] = useState();
@@ -77,31 +94,51 @@ export default function LandingPage() {
   };
   return (
     <>
-      <div
-        className="d-flex flex-column align-items-center landing-container"
-        style={{
-          height: "100vh",
-          width: "100%",
-          background: "rgb(24,5,44)",
-          ...bgStyle,
-        }}
-      >
-        <img
-          src="/Logos/CollegeLogo.webp"
-          alt="College-Logo"
-          className="college-logo"
-          style={{ width: "20vw" }}
-        />
-        <p className="text-white fw-bold college-logo">Presents</p>
-        <img src="/Logos/FestLogo.svg" alt="fest-logo" className="fest-logo" />
-        <img
-          src="/Icons/Double-Down.png"
-          alt="icon"
-          style={{ height: "7vh" }}
-        />
-      </div>
-      {visible && (
-        <>
+      {visible1 && (
+        <div
+          className={`d-flex flex-column align-items-center landing-container`}
+          style={{
+            height: "100vh",
+            width: "100%",
+            background: "rgb(24,5,44)",
+            ...bgStyle,
+          }}
+        >
+          <img
+            src="/Logos/CollegeLogo.webp"
+            alt="College-Logo"
+            className="college-logo"
+            style={{ width: "20vw" }}
+          />
+          <p className="text-white fw-bold college-logo">Presents</p>
+          <img
+            src="/Logos/FestLogo.svg"
+            alt="fest-logo"
+            className="fest-logo"
+          />
+          {visible && (
+            <img
+              src="/Icons/Double-Down.png"
+              alt="icon"
+              style={{ height: "7vh" }}
+              className="double-down"
+              onClick={scrollToSection}
+            />
+          )}
+        </div>
+      )}
+      {visible2 && (
+        <div ref={sectionRef}>
+          <img
+            src="/Logos/FestLogo.svg"
+            alt="fest-logo"
+            style={{
+              position: "fixed",
+              width: "12.5vw",
+              marginLeft: "5vw",
+              marginTop: "2.5vh",
+            }}
+          />
           <div
             className="text-white d-flex flex-column align-items-center"
             style={{
@@ -334,7 +371,7 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </>
   );

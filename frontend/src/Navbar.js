@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(false);
-  const [festLogoVisible, setFestLogoVisible] = useState(false);
   const location = useLocation();
   useEffect(() => {
     if (location.pathname === "/") {
@@ -17,15 +16,13 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="px-5 pt-3 d-flex flex-row gap-5 align-items-end fixed-navbar">
-        {festLogoVisible && (
-          <img src="/Logos/FestLogo.svg" alt="logo" width="200px" />
-        )}
+      <div
+        className="px-5 pt-3 d-flex flex-row gap-5 align-items-end fixed-navbar"
+        style={{ marginLeft: "17.5vw", width: "82.5vw", marginTop: "5vh" }}
+      >
         {visible && (
           <div
-            className={`text-center text-white d-flex flex-row flex-grow-1 justify-content-evenly fs-5 border border-2 rounded navbar${
-              visible ? "active" : ""
-            }`}
+            className={`text-center text-white d-flex flex-row flex-grow-1 justify-content-evenly fs-5 border border-2 rounded`}
           >
             <div
               className="d-flex flex-grow-1 justify-content-center nav-element"
